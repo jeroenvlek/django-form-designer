@@ -53,7 +53,7 @@ class TemplateFormField(forms.CharField):
         from django.template import Template, TemplateSyntaxError
         try:
             Template(value)
-        except TemplateSyntaxError, error:
+        except TemplateSyntaxError as error:
             raise ValidationError(error)
         return value
 
