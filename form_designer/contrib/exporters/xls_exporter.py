@@ -1,7 +1,6 @@
 from form_designer.contrib.exporters import FormLogExporterBase
 from form_designer import settings
 from django.http import HttpResponse
-from django.utils.encoding import smart_unicode
 
 try:
     import xlwt
@@ -33,7 +32,7 @@ class XlsExporter(FormLogExporterBase):
 
     def writerow(self, row):
         for i, f in enumerate(row):
-            self.ws.write(self.rownum, i, smart_unicode(f, encoding=settings.CSV_EXPORT_ENCODING))
+            self.ws.write(self.rownum, i, f.decode(settings.CSV_EXPORT_ENCODING))
         self.rownum += 1
 
     def close(self):
