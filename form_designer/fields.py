@@ -85,7 +85,7 @@ class RegexpExpressionFormField(forms.CharField):
         import re
         try:
             re.compile(value)
-        except Exception, error:
+        except Exception as error:
             raise ValidationError(error)
         return value
 
